@@ -21,3 +21,9 @@
  **<p align="center"> energy prediction in testset </p>**
 ![](https://i.imgur.com/SJDc03R.png)
  **<p align="center"> network structure </p>**
+
+### 算法
+- 给定输入坐标
+- 使用DeepChem的ANITransform得到feature，将feature转化为每个原子为中心的feature，feature的向量长度就是之后NN的输入shape的最后一维
+- 然后将feature按照原子归类，转为字典，key是原子序数，value是(None, n_feature)大小的矩阵。
+- 网络的input是一个字典，key是原子序数，value是tf.placeHolder，这样可以实现对于不同种类原子使用不同的NN，然后将输入(None, n_feature)经过Dense得到(None, 1),reduce_sum得到1，即这种原子的能量分量，同样得到其他原子的分量，进行第二次reduce_sum，得到总能量
