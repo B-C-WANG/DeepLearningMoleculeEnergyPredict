@@ -18,7 +18,7 @@
 
 ### some figs
 ![](https://i.imgur.com/iYZN0mu.png)
- **<p align="center"> energy prediction in testset </p>**
+ **<p align="center"> energy prediction in testset, use transition state and intermediates on Ni surface</p>**
 ![](https://i.imgur.com/SJDc03R.png)
  **<p align="center"> network structure </p>**
 
