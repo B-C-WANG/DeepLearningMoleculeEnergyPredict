@@ -378,7 +378,7 @@ def one_line_train():
     print_file("Start Data Collecting")
     # 准备数据
 
-    aim_vasp_path = "<The Dir Containing Many Vasp Dirs>"
+    aim_vasp_path = "S:\数据集\碳纳米管掺杂\\5-5\\b\oh"
 
     dataset_maker = DatasetMaker(aim_vasp_path)
     dataset_maker.make_dataset()

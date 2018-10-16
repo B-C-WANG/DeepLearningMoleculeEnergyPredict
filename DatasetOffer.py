@@ -53,7 +53,7 @@ class DatasetOffer(object):
 
         train_datasets = []
         test_datasets = []
-
+        # 对于每一个文件，打乱里面的数据然后分训练和测试集，每个里面都是所有原子坐标构成的帧
         for i in self.aim_sample_keys:
 
             #print(self.total_info[i])
@@ -61,7 +61,7 @@ class DatasetOffer(object):
 
             trainX,testX,trainy,testy = train_test_split(self.total_info[i]['x'],
                                                          self.total_info[i]['y'],
-                                                         test_size=test_size)
+                                                         test_size=test_size,shuffle=True)
             train_datasets.append(NumpyDataset(X=trainX,y=trainy))
             test_datasets.append(NumpyDataset(X=testX,y=testy))
             atom_cases = self.total_info[i]["atom_cases"] # 随便来一个atom cases就行，因为一批训练是一样的
@@ -83,8 +83,10 @@ class DatasetOffer(object):
         '''
 
         train_datasets, test_datasets, atom_cases = self.generate_dataset(test_size=0.2)
-        # 这个分割似乎是利用分割数据集而不是分割每个数据集里面的data
-        # 比如用CHOH 去训练，预测 COH，而不是用CHOH 和 COH的一部分训练，去预测另一部分
+        # 这个分割是把每个数据集里面分出X 和 Y，但是似乎应当将所有数据集混合在一起然后再分更为合理，
+        # 或者在训练时混合不同来源的数据集
+        # TODO：这里数据集没有扩增，不同来源的数据集样本比例有差异！
+
 
 
         total_train_feed_x = []
@@ -239,6 +241,7 @@ class DatasetOffer(object):
         for i in atom_cases:
             new_atom_cases.append(atom_index_trans_reverse[i])
         atom_cases = new_atom_cases
+
 
         if save_pkl_path:
             with open(save_pkl_path, "wb") as f:

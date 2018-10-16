@@ -1,0 +1,18 @@
+2018-10-16 10:45:25> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-10-16 10:45:25> Start Data Collecting
+2018-10-16 10:45:25> Process For generating dataset: 0 / 7
+2018-10-16 10:45:25> vasp_dir S:\数据集\碳纳米管掺杂\5-5\b\oh have sample 78
+2018-10-16 10:45:25> Process For generating dataset: 1 / 7
+2018-10-16 10:45:25> vasp_dir S:\数据集\碳纳米管掺杂\5-5\b\oh\2 have sample 77
+2018-10-16 10:45:25> Process For generating dataset: 2 / 7
+2018-10-16 10:45:25> vasp_dir S:\数据集\碳纳米管掺杂\5-5\b\oh\3 have sample 64
+2018-10-16 10:45:25> Process For generating dataset: 3 / 7
+2018-10-16 10:45:26> vasp_dir S:\数据集\碳纳米管掺杂\5-5\b\oh\4 have sample 64
+2018-10-16 10:45:26> Process For generating dataset: 4 / 7
+2018-10-16 10:45:26> vasp_dir S:\数据集\碳纳米管掺杂\5-5\b\oh\5 have sample 74
+2018-10-16 10:45:26> Process For generating dataset: 5 / 7
+2018-10-16 10:45:26> vasp_dir S:\数据集\碳纳米管掺杂\5-5\b\oh\6 have sample 67
+2018-10-16 10:45:26> Process For generating dataset: 6 / 7
+2018-10-16 10:45:26> No enough samples for S:\数据集\碳纳米管掺杂\5-5\b\oh\ens-cnt, which have 1.
+2018-10-16 10:45:26> Finished Data Collecting, Start Feature Transform
+2018-10-16 10:45:26> processing 0
