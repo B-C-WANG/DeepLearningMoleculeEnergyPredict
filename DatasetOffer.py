@@ -126,7 +126,9 @@ class DatasetOffer(object):
                 atom_cases=list(atom_cases),
                 radial_length= r_feature_num,
                 angular_length=a_feature_num,
-                atomic_number_differentiated=True
+                atomic_number_differentiated=True,
+
+
                 # 这里建议是True，这样可以向量按照原子分开，每一个原子是一个向量，而不是先给每个原子的radial向量再给angular向量
                 # the shape is : sample number, atom number, feature (which is atom_index + bond_feature + angle_feature)
                 # take 4 atom type for example:
@@ -142,6 +144,9 @@ class DatasetOffer(object):
 
                 # 要注意，这里的原子要最大化成体系，比如CHONi，如果有CHNi而没有O的，也要把O的feature加进去，否则feature的大小不如预期
 )
+
+            # 如果batch_size过大，可能造成OOM
+            transformer.transform_batch_size = 2
             atom_cases_num = len(atom_cases)
 
             trans_train = transformer.transform(train_dataset)
