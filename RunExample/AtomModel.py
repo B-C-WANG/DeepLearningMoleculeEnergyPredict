@@ -366,19 +366,15 @@ def train_from_pkl():
 
 
 
-def one_line_train():
+def one_line_train():# 一条龙测试
 
-    '''
-    TODO: 数据集随机打乱训练
-    TODO：增加类存储，增加数据集，所涉及原子种类信息保存等，对NN结构进行调参
-    
-    '''
+    # TODO：似乎权重没有正确载入或者存储，要进行debug！！！！！
+    # TODO：载入权重后print权重的前几个数值，用于debug
 
     print_file(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
     print_file("Start Data Collecting")
     # 准备数据
-
-    aim_vasp_path = "<The Dir Containing Many Vasp Dirs>"
+    aim_vasp_path = "/public/home/yangbo1/wangbch/PdPt111/trans/Pt/DataForTrainNN"
 
     dataset_maker = DatasetMaker(aim_vasp_path)
     dataset_maker.make_dataset()
@@ -394,7 +390,7 @@ def one_line_train():
     atom_cases, \
     n_feat = \
         dataset_offer.ANI_transform(save_pkl_path="ANI_features.pkl")
-    # 利用DeepChem的ANI transform进行转化，存储到pkl文件中
+
     nn = FullAtomModel(atom_cases, os.getcwd() + "/model",n_feat)
 
 
@@ -405,10 +401,8 @@ def one_line_train():
 
     string = 'Total feed X shape: \n'
     string += "Train: "
-
     for i in total_train_feed_x:
         for j in i:
-            print(i[j])
             string += j + ":" +str(i[j].shape)
     string += "\n"
 
@@ -419,10 +413,10 @@ def one_line_train():
     string += "\n"
     print_file(string)
 
-    repeat = 100
+    repeat = 10 # 一般1个repeat2min
     index = 0
 
-    for i in range(repeat):# 这里用while True也行，因为每次fit都会保存weights
+    for i in range(repeat):
         #print_file(">>Loop %s/%s"%(i+1,repeat))
         print_file(">>Loop %s"%(index))
 
@@ -430,18 +424,16 @@ def one_line_train():
             print_file(">>>>Train for %s/%s" % (dataset_index+1, len(total_train_feed_x)))
             nn.fit(total_train_feed_x[dataset_index],total_train_feed_y[dataset_index],epoch=1000,load_weights=True)
         index += 1
-
+    # 云端训练之后存储了权重下载到本地进行预测
     nn.save_atom_weights()
 
 def predict():
 
-    # 直接使用编码后的数据，也可以现进行编码
     with open("ANI_features.pkl", "rb") as f:
-        # _代表不使用train的数据
         _, total_test_feed_x, _, total_test_feed_y, atom_cases, n_feat\
             = pickle.load(f)
 
-    # 读取存储的模型
+
     nn = FullAtomModel(atom_cases, os.getcwd() + "/model/trained", n_feat)
 
     nn.load_atom_weights()

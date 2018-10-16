@@ -1,0 +1,31 @@
+
+#PBS -l nodes=1:ppn=1:gpus=1
+#PBS -q sist-pub
+#PBS -l walltime=99:23:59:59
+#PBS -N tensorflow-deepchem
+
+cd $PBS_O_WORKDIR
+
+nvidia-smi > nvDebug_s
+
+source //public/software/compiler/intel/composer_xe_2015.2.164/bin/compilervars.sh intel64
+source //public/software/mpi/intelmpi/5.0.2.044/intel64/bin/mpivars.sh
+
+export LD_LIBRARY_PATH=/public/software/compiler/cuda/7/cuda-8.0/lib64/:$LD_LIBRARY_PATH
+
+export PATH=/public/software/compiler/cuda/7/cuda-8.0/bin:$PATH
+
+export INCLUDE=/public/software/compiler/cuda/7/cuda-8.0/include:$INCLUDE
+
+export LD_LIBRARY_PATH=/public/home/yangbo1/cudnn/cuda/lib64:$LD_LIBRARY_PATH
+
+export INCLUDE=/public/home/yangbo1/cudnn/cuda/include:$INCLUDE
+
+env > env_check
+
+nvidia-smi > nvDebug_e
+
+export CUDA_VISIBLE_DEVICES=0
+
+
+python main.py > print_out

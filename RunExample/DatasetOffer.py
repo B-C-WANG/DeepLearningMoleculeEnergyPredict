@@ -83,8 +83,7 @@ class DatasetOffer(object):
         '''
 
         train_datasets, test_datasets, atom_cases = self.generate_dataset(test_size=0.2)
-        # 这个分割似乎是利用分割数据集而不是分割每个数据集里面的data
-        # 比如用CHOH 去训练，预测 COH，而不是用CHOH 和 COH的一部分训练，去预测另一部分
+
 
 
         total_train_feed_x = []
@@ -95,7 +94,7 @@ class DatasetOffer(object):
         dataset_number = len(train_datasets)
         print("Dataset Number: ",dataset_number)
         #dataset_number = 2 # 减少计算量使用
-        for dataset_index in range(dataset_number): # 这里每个文件进行处理
+        for dataset_index in range(dataset_number):
 
             # 对于每一个文件样本，里面归类成一个dict
             nn_train_x = {}
@@ -125,7 +124,7 @@ class DatasetOffer(object):
                 radial_length= r_feature_num,
                 angular_length=a_feature_num,
                 atomic_number_differentiated=True
-                # 这里建议是True，这样可以向量按照原子分开，每一个原子是一个向量，而不是先给每个原子的radial向量再给angular向量
+                # 这里建议是True，否则不同原子不会区分开！
                 # the shape is : sample number, atom number, feature (which is atom_index + bond_feature + angle_feature)
                 # take 4 atom type for example:
                 # this feature is 1 + 128 + 640, from tensorboard, we have 4, so should be 1 + 32*4 + 160*4
@@ -148,8 +147,6 @@ class DatasetOffer(object):
             trainX = trans_train.X
             testX = trans_test.X
 
-            # 这里的转化把r feature和a feature连在一起，以对应原子为group，便于今后分类，但可能是不必要的
-            # trainX, testX = tran_features(trainX,testX)
             def tran_features(trainX,testX):
                 def x_trans(input):
                     atom_index = input[:,:,0]
@@ -185,7 +182,8 @@ class DatasetOffer(object):
                 plot_out_feature()
                 return trans_trainX, trans_test
 
-
+            # 这里的转化把r feature和a feature连在一起，以对应原子为group，便于今后分类，但可能是不必要的
+            #trainX, testX = tran_features(trainX,testX)
 
 
 
