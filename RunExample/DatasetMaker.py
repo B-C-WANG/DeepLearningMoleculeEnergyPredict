@@ -101,10 +101,4 @@ if __name__ == '__main__':
     #temp.save_dataset("C:\\Users\wang\Desktop\运行结果")
 # 现在的问题是，OUT.ANI有2倍的坐标数据于能量数据： 最终选择：直接从OUTCAR中提取坐标，寻找以前有的代码
 
-
-#data_dir = "dataset/H-CH2OH/"
-#data_dir = "C:\\Users\Administrator\Desktop\CHEM-ML\DatasetAlgorithm\DeepChemUse\myDeepChem\dataset\H-COH"
-#data_dir = "G:\wbc\GitHub\CHEM-ML\DatasetAlgorithm\DeepChemUse\myDeepChem\dataset\H-COH"
-#data_dir = "G:\wbc\GitHub\CHEM-ML\DatasetAlgorithm\DeepChemUse\myDeepChem\dataset/H-CH2OH/"
-
 # TODO  数据集需要规定原子种类，如果有没有的原子，它的结果不应该增加到能量中，因为有bias的存在，所以不能用feature为0000来进行
