@@ -797,3 +797,107 @@ O:(13, 1, 481)H:(13, 1, 481)C:(13, 108, 481)
 O:(23, 1, 481)H:(23, 1, 481)C:(23, 108, 481)
 
 2018-10-17 15:11:39> >>Loop 1
+2018-11-07 09:25:52> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 09:25:52> Start Data Collecting
+2018-11-07 09:57:27> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 09:57:27> Start Data Collecting
+2018-11-07 09:58:03> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 09:58:03> Start Data Collecting
+2018-11-07 09:58:03> Process For generating dataset: 0 / 4
+2018-11-07 09:58:03> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 09:58:03> Process For generating dataset: 1 / 4
+2018-11-07 09:58:04> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 09:58:04> Process For generating dataset: 2 / 4
+2018-11-07 09:58:04> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 09:58:04> Process For generating dataset: 3 / 4
+2018-11-07 09:58:04> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 09:58:04> Finished Data Collecting, Start Feature Transform
+2018-11-07 09:58:04> processing 0
+2018-11-07 10:00:16> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 10:00:16> Start Data Collecting
+2018-11-07 10:00:16> Process For generating dataset: 0 / 4
+2018-11-07 10:00:17> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 10:00:17> Process For generating dataset: 1 / 4
+2018-11-07 10:00:17> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 10:00:17> Process For generating dataset: 2 / 4
+2018-11-07 10:00:17> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 10:00:17> Process For generating dataset: 3 / 4
+2018-11-07 10:00:17> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 10:00:17> Finished Data Collecting, Start Feature Transform
+2018-11-07 10:00:17> processing 0
+2018-11-07 10:07:20> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 10:07:20> Start Data Collecting
+2018-11-07 10:07:20> Process For generating dataset: 0 / 4
+2018-11-07 10:07:20> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 10:07:20> Process For generating dataset: 1 / 4
+2018-11-07 10:07:21> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 10:07:21> Process For generating dataset: 2 / 4
+2018-11-07 10:07:21> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 10:07:21> Process For generating dataset: 3 / 4
+2018-11-07 10:07:21> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 10:07:21> Finished Data Collecting, Start Feature Transform
+2018-11-07 10:07:21> processing 0
+2018-11-07 10:08:04> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 10:08:04> Start Data Collecting
+2018-11-07 10:08:04> Process For generating dataset: 0 / 4
+2018-11-07 10:08:04> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 10:08:04> Process For generating dataset: 1 / 4
+2018-11-07 10:08:05> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 10:08:05> Process For generating dataset: 2 / 4
+2018-11-07 10:08:05> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 10:08:05> Process For generating dataset: 3 / 4
+2018-11-07 10:08:05> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 10:08:05> Finished Data Collecting, Start Feature Transform
+2018-11-07 10:08:05> processing 0
+2018-11-07 10:11:42> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 10:11:42> Start Data Collecting
+2018-11-07 10:11:42> Process For generating dataset: 0 / 4
+2018-11-07 10:11:42> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 10:11:42> Process For generating dataset: 1 / 4
+2018-11-07 10:11:43> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 10:11:43> Process For generating dataset: 2 / 4
+2018-11-07 10:11:43> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 10:11:43> Process For generating dataset: 3 / 4
+2018-11-07 10:11:44> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 10:11:44> Finished Data Collecting, Start Feature Transform
+2018-11-07 10:11:44> processing 0
+2018-11-07 10:14:58> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 10:14:58> Start Data Collecting
+2018-11-07 10:14:58> Process For generating dataset: 0 / 4
+2018-11-07 10:14:58> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 10:14:58> Process For generating dataset: 1 / 4
+2018-11-07 10:14:58> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 10:14:58> Process For generating dataset: 2 / 4
+2018-11-07 10:14:58> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 10:14:58> Process For generating dataset: 3 / 4
+2018-11-07 10:14:58> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 10:14:58> Finished Data Collecting, Start Feature Transform
+2018-11-07 10:14:58> processing 0
+2018-11-07 10:15:37> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 10:15:37> Start Data Collecting
+2018-11-07 10:15:37> Process For generating dataset: 0 / 4
+2018-11-07 10:15:38> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 10:15:38> Process For generating dataset: 1 / 4
+2018-11-07 10:15:38> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 10:15:38> Process For generating dataset: 2 / 4
+2018-11-07 10:15:38> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 10:15:38> Process For generating dataset: 3 / 4
+2018-11-07 10:15:39> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 10:15:39> Finished Data Collecting, Start Feature Transform
+2018-11-07 10:15:39> processing 0
+2018-11-07 10:16:04> processing 1
+2018-11-07 10:16:29> processing 2
+2018-11-07 10:23:47> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>New Game Begin!<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+2018-11-07 10:23:47> Start Data Collecting
+2018-11-07 10:23:47> Process For generating dataset: 0 / 4
+2018-11-07 10:23:47> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh have sample 66
+2018-11-07 10:23:47> Process For generating dataset: 1 / 4
+2018-11-07 10:23:47> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2 have sample 76
+2018-11-07 10:23:47> Process For generating dataset: 2 / 4
+2018-11-07 10:23:47> No enough samples for S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\2\ens-cnt, which have 1.
+2018-11-07 10:23:47> Process For generating dataset: 3 / 4
+2018-11-07 10:23:48> vasp_dir S:\FTP\数据集\碳纳米管掺杂\整理后\7-7\ooh\3 have sample 119
+2018-11-07 10:23:48> Finished Data Collecting, Start Feature Transform
+2018-11-07 10:23:48> processing 0
+2018-11-07 10:24:14> processing 1
+2018-11-07 10:24:40> processing 2

@@ -1,5 +1,9 @@
-from AtomModel import *
+from dlmep.AtomModel import FullAtomModel
 import numpy as np
+import pickle
+from dlmep.DatasetOffer import DatasetOffer,print_file
+from dlmep.DatasetMaker import DatasetMaker
+
 import traceback
 
 
@@ -14,7 +18,7 @@ def prepare_data_set(vasp_dir_path):
     dataset_maker.make_dataset()
     total_info = dataset_maker.give_out_dataset()
     print_file("Finished Data Collecting, Start Feature Transform")
-
+    print(total_info)
     # 坐标编码
     dataset_offer = DatasetOffer(total_data_info=total_info)
     total_train_feed_x, \
@@ -24,7 +28,10 @@ def prepare_data_set(vasp_dir_path):
     atom_cases, \
     n_feat = \
         dataset_offer.ANI_transform(save_pkl_path="ANI_features.pkl")
-
+    print(total_train_feed_x)
+    print(total_train_feed_x.key)
+    exit()
+    print(total_train_feed_x)
 
 # 将ANI编码过后的feature用于训练，存储模型到/model中
 def load_pkl_file_to_train(ANI_pkl_file_path="ANI_features.pkl", epoch=100):
@@ -87,6 +94,7 @@ def load_pkl_file_to_train(ANI_pkl_file_path="ANI_features.pkl", epoch=100):
             '''
 
             # 进行解包数据聚合，需要内存较大，如果样本来源很多需要修改处理方法
+            # 如果原子数目不一样，不能使用这个方法或者需要进行改进
             for atom in atom_cases:
                 try:
                     X[atom] = np.concatenate([total_train_feed_x[dataset_index][atom], X[atom]], axis=0)
@@ -151,8 +159,8 @@ def load_pkl_file_to_train(ANI_pkl_file_path="ANI_features.pkl", epoch=100):
 
 
 
-
-    train_shuffle_by_batch_size()
+    train_group_by_dataset_from()
+    #train_shuffle_by_batch_size()
 
     nn.save_atom_weights()
 
@@ -180,5 +188,6 @@ def predict(ANI_pkl_file_path="ANI_features.pkl"):
     plt.show()
 
 
-# prepare_data_set("/public/home/yangbo1/wangbch/nanotube/9-9")
+#prepare_data_set("/public/home/yangbo1/wangbch/nanotube/9-9")
+prepare_data_set("S:\FTP\数据集\碳纳米管掺杂\整理后\\7-7\ooh")
 load_pkl_file_to_train()

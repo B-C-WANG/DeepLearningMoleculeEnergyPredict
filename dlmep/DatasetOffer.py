@@ -8,7 +8,7 @@ import tensorflow as tf
 import deepchem as dc
 import time
 import os
-from DatasetMaker import *
+from dlmep.DatasetMaker import *
 from VDE.AtomSpace import atom_index_trans_reverse
 
 import matplotlib.pyplot as plt
@@ -94,6 +94,7 @@ class DatasetOffer(object):
 
         total_train_feed_y = []
         total_test_feed_y = []
+
         dataset_number = len(train_datasets)
         print("Dataset Number: ",dataset_number)
         #dataset_number = 2 # 减少计算量使用
@@ -109,8 +110,17 @@ class DatasetOffer(object):
             print_file("processing %s" % dataset_index)
 
             train_dataset = train_datasets[dataset_index]
+
+
             test_dataset = test_datasets[dataset_index]
 
+
+            # for debug
+            train_dataset = NumpyDataset(X=train_dataset.X[:2,:,:], y=train_dataset.y[:2])
+            test_dataset = NumpyDataset(X=test_dataset.X[:2, :, :], y=test_dataset.y[:2])
+            # for debug -- end
+
+            # here it is NumpyDataset, so can use .y
             total_train_feed_y.append(train_dataset.y)
             total_test_feed_y.append(test_dataset.y)
 
@@ -157,44 +167,40 @@ class DatasetOffer(object):
 
             # 这里的转化把r feature和a feature连在一起，以对应原子为group，便于今后分类，但可能是不必要的
             # trainX, testX = tran_features(trainX,testX)
-            def tran_features(trainX,testX):
-                def x_trans(input):
-                    atom_index = input[:,:,0]
-                    features = input[:,:,1:]
-
-                    # 这里有问题，不应该先分成4份，应该先把半径 feature提取出来，再划分和concat
-                    features_r = features[:,:,:atom_cases_num*r_feature_num]
-                    features_a = features[:,:,atom_cases_num*r_feature_num:]
-                    # 分成4份，注意4应该是倒数第二个，最后一个才是feature
-                    features_r = features_r.reshape(features_r.shape[0],
-                                                    features_r.shape[1],
-                                                    atom_cases_num,
-                                                    r_feature_num,)
-                    features_a = features_a.reshape(features_a.shape[0],
-                                                    features_a.shape[1],
-                                                    atom_cases_num,
-                                                    features_a.shape[2] // atom_cases_num,)
-                    features = np.concatenate([features_r,features_a],axis=3)
-                    features = features.reshape(features.shape[0],features.shape[1],-1)
-
-                    features = np.insert(features,0,values=atom_index,axis=2)# 最后把index加上
-
-                    return features
-                trans_trainX = x_trans(trainX)
-                trans_testX = x_trans(testX)
-                #这里check一下feature的提取是否正确
-                def plot_out_feature():
-                    plt.plot(trainX[0,20,:],"r",alpha=0.5)
-                    #print(trainX.shape)
-                    plt.plot(trans_trainX[0,20,:],"b",alpha=0.5)
-                    #print(trans_trainX.shape)
-                    plt.show()
-                plot_out_feature()
-                return trans_trainX, trans_test
-
-
-
-
+            # def tran_features(trainX,testX):
+            #     def x_trans(input):
+            #         atom_index = input[:,:,0]
+            #         features = input[:,:,1:]
+            #
+            #         # 这里有问题，不应该先分成4份，应该先把半径 feature提取出来，再划分和concat
+            #         features_r = features[:,:,:atom_cases_num*r_feature_num]
+            #         features_a = features[:,:,atom_cases_num*r_feature_num:]
+            #         # 分成4份，注意4应该是倒数第二个，最后一个才是feature
+            #         features_r = features_r.reshape(features_r.shape[0],
+            #                                         features_r.shape[1],
+            #                                         atom_cases_num,
+            #                                         r_feature_num,)
+            #         features_a = features_a.reshape(features_a.shape[0],
+            #                                         features_a.shape[1],
+            #                                         atom_cases_num,
+            #                                         features_a.shape[2] // atom_cases_num,)
+            #         features = np.concatenate([features_r,features_a],axis=3)
+            #         features = features.reshape(features.shape[0],features.shape[1],-1)
+            #
+            #         features = np.insert(features,0,values=atom_index,axis=2)# 最后把index加上
+            #
+            #         return features
+            #     trans_trainX = x_trans(trainX)
+            #     trans_testX = x_trans(testX)
+            #     #这里check一下feature的提取是否正确
+            #     def plot_out_feature():
+            #         plt.plot(trainX[0,20,:],"r",alpha=0.5)
+            #         #print(trainX.shape)
+            #         plt.plot(trans_trainX[0,20,:],"b",alpha=0.5)
+            #         #print(trans_trainX.shape)
+            #         plt.show()
+            #     plot_out_feature()
+            #     return trans_trainX, trans_test
 
 
             n_feat = transformer.get_num_feats()
