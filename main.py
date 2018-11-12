@@ -1,3 +1,4 @@
+# coding : utf-8
 from dlmep.AtomModel import FullAtomModel
 import numpy as np
 import pickle

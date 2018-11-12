@@ -116,8 +116,8 @@ class DatasetOffer(object):
 
 
             # for debug
-            train_dataset = NumpyDataset(X=train_dataset.X[:2,:,:], y=train_dataset.y[:2])
-            test_dataset = NumpyDataset(X=test_dataset.X[:2, :, :], y=test_dataset.y[:2])
+            #train_dataset = NumpyDataset(X=train_dataset.X[:2,:,:], y=train_dataset.y[:2])
+            #test_dataset = NumpyDataset(X=test_dataset.X[:2, :, :], y=test_dataset.y[:2])
             # for debug -- end
 
             # here it is NumpyDataset, so can use .y
