@@ -1,0 +1,25 @@
+#PBS -l nodes=1:ppn=14
+#PBS -q normal_4
+#PBS -l walltime=99:23:59:59
+#PBS -N wbc
+
+
+source //public/software/compiler/intel/composer_xe_2015.2.164/bin/compilervars.sh intel64
+source //public/software/mpi/intelmpi/5.0.2.044/intel64/bin/mpivars.sh
+
+cd $PBS_O_WORKDIR
+#NPROCS=`wc -l < $PBS_NODEFILE`
+export PAR_RUN="/public/software/mpi/intelmpi/5.0.2.044/intel64/bin/mpirun"
+#export VASP="/home/apps/qe-6.0/bin/pw.x"
+#export VASP="/home/swj/bin/GF_surface_mpi_v4.2"
+export VASP="/public/home/yangbo1/vasp_std"
+#export VASP="/home/apps/vasp541_std_wannier"
+#export VASP="/home/apps/vasp541_ncl"
+#export VASP="/home/apps/vasp541_ncl_wannier"
+#export VASP="/home/apps/vasp541_gam"
+#export VASP="/home/apps/vasp541_gam_wannier"
+
+cp $PBS_NODEFILE node
+NCORE=`cat node | wc -l`
+$PAR_RUN -machinefile node -np $NCORE $VASP > print-out
+
