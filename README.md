@@ -120,6 +120,29 @@ _**Network structure of the FullAtomModel in Demo**_
 
 ![](.gitbook/assets/68747470733a2f2f692e696d6775722e636f6d2f534a44633033522e706e67.png)
 
+## Dataflow
+
+### DatasetMaker
+
+From VASP results to 3D coordinate and energy \(potential energy\). Input: list of str\(dir\_path\). Output: List of array \(n\_sample, n\_atom, 4\), the length of list is equal to length of the dir\_path list
+
+### DatasetOffer
+
+Input: List of array \(n\_sample, n\_atom, 4\) as X, List of array \(n\_sample 1\) as Y.
+
+ANI-Transform: List of Dict, each dict use atom\_case as key, value is array \(n\_sample, n\_atom of that atom\_case, n\_feature\). For train set and test set, the only different is the n\_sample in value array. \(This is in the train/test stage, validation stage is different.\)
+
+![](.gitbook/assets/datasetstructure.png)
+
+### AtomModel.FullAtomModel
+
+Input: feature\_num, atom\_cases. Data: List of Dict, each dict use atom\_case as key**\(the atom\_cases is str like H, Pt, C, O, ... \)**, value is array \(n\_sample, n\_atom of that atom\_case, n\_feature\).
+
+Build a dense NN from n\_feature to 1 for each atom\_case. For every dense NN, its input is \(n\_sample, n\_atom, n\_feature\), its output is \(n\_sample, 1\), the first reduce sum is used to make output not dependent on n\_atom.
+
+Then reduce sum the output of each dense NN.  
+
+
 ## Old content
 
 ### 算法
