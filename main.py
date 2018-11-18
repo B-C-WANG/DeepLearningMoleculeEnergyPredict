@@ -4,7 +4,9 @@ import numpy as np
 import pickle
 from dlmep.DatasetOffer import DatasetOffer,print_file
 from dlmep.DatasetMaker import DatasetMaker
-
+from VDE.AtomSpace import atom_index_trans_reverse
+import  os
+import matplotlib.pyplot as plt
 import traceback
 
 
@@ -188,7 +190,94 @@ def predict(ANI_pkl_file_path="ANI_features.pkl"):
     plt.savefig("test_result.png", dpi=300)
     plt.show()
 
+def load_soapml_feature_to_train():
+    '''
+
+    input: dataset X, dataset y
+    这里的问题是
+    编码可能使用C Pt N原子，但是被编码的是H 和O，即H和O作为中心，C Pt N作为环境
+    这样的话，默认所有原子作为中心和环境的AtomNN就有歧义，需要注意应用范围！
+
+
+    :return:
+    '''
+
+    with open("S:\FTP\数据集\碳纳米管掺杂\\atomNNDataset.pkl", "rb") as f:
+
+        x,y,center_atom_cases,encode_atom_cases,feature_num = pickle.load(f)
+    print(x,y)
+    center_atom_cases = [atom_index_trans_reverse[i] for i in center_atom_cases]
+    encode_atom_cases = [atom_index_trans_reverse[i] for i in encode_atom_cases]
+
+    new_x = []
+    for sample in x:
+        tmp = {}
+        for key in sample:
+            #print(atom_index_trans_reverse[key])
+            tmp[atom_index_trans_reverse[key]] = sample[key]
+        new_x.append(tmp)
+    pass
+    x = new_x
+
+    def split_dataset(x,y,ratio=0.3):
+        trainX = []
+        testX = []
+        trainY = []
+        testY = []
+        for sample_index in range(len(x)):
+            sample_x = x[sample_index]
+            sample_y = y[sample_index]
+            # dataset中sample小于10的不要
+            if len(sample_y) <= 10:
+                continue
+            split_num = int(len(sample_y) * (1-ratio))
+            trainY.append(sample_y[:split_num])
+            testY.append(sample_y[split_num:])
+            train = {}
+            test = {}
+            for key in sample_x:
+                train[key] = sample_x[key][:split_num,:,:]
+                test[key] = sample_x[key][split_num:,:,:]
+            trainX.append(train)
+            testX.append(test)
+        return  trainX, testX, trainY,testY
+
+
+
+    trainX, testX, trainY, testY = split_dataset(x,y,0.3)
+    pass
+    # 注意使用center atom cases，
+    nn  = FullAtomModel(center_atom_cases,os.getcwd()+"/model",feature_num)
+    try:
+        nn.load_atom_weights()
+    except:
+        pass
+
+    epoch = 100
+
+    index = 0
+    for i in range(epoch):  # 这里用while True也行，因为每次fit都会保存weights
+        # print_file(">>Loop %s/%s"%(i+1,repeat))
+        print_file(">>Loop %s" % (index))
+
+        for dataset_index in range(len(trainX)):
+            print_file(">>>>Train for %s/%s" % (dataset_index + 1, len(trainX)))
+            nn.fit(trainX[dataset_index], trainY[dataset_index], epoch=1000,
+                   load_weights=True,
+                   save_weights=True)
+        index += 1
+
+
+
+
+
+
+
+load_soapml_feature_to_train()
+
 
 #prepare_data_set("/public/home/yangbo1/wangbch/nanotube/9-9")
-prepare_data_set("S:\FTP\数据集\碳纳米管掺杂\整理后\\7-7\ooh")
-load_pkl_file_to_train()
+#prepare_data_set("S:\FTP\数据集\碳纳米管掺杂\整理后\\7-7\ooh")
+#load_pkl_file_to_train()
+
+
